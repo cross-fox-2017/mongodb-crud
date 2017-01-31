@@ -12,18 +12,15 @@ var Customers = new Schema({
     required: true
   },
   address: {
-    type: String,
-    required: true
+    type: String
   },
   zipcode: {
-    type: String,
-    required: true
+    type: String
   },
   phone: {
-    type: String,
-    required: true
-  }
+    type: String
+  },
 });
-var customers = mongoose.model('Customers', customers);
+var customers = mongoose.model('Customers', Customers);
 
 module.exports = customers

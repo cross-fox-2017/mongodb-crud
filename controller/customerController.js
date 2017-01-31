@@ -7,8 +7,8 @@ let customerController = {
       memberid : req.body.memberid,
       name : req.body.name,
       address: req.body.address,
-      zipcode: req.body.zipcode,
-      phone: req.body.phone
+      phone: req.body.phone,
+      zipcode: req.body.zipcode
     }
     let newcustomers = customers(data)
     newcustomers.save(function(err){

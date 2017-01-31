@@ -3,19 +3,21 @@ var Schema   = mongoose.Schema;
 var db = mongoose.connection;
 
 var Transactions = new Schema({
-  trscid : {
-    type: String,
-    required: true
+  memberid : {
+    type: Schema.Types.ObjectId,
+    ref: 'customers'
   },
-  memberid : {type: Schema.Types.isbn, ref: 'customers'},
   days: Number,
   out_date: Date,
   due_date: Date,
   in_date: Date,
   fine: Number,
-  booklist: [{ type: Schema.Types.isbn, ref: 'books' }]
+  booklist: [{
+    type: Schema.Types.ObjectId,
+    ref: 'books'
+  }]
 });
 
 var transaction = mongoose.model('Transactions', Transactions);
 
-module.exports = transactions
+module.exports = transaction
