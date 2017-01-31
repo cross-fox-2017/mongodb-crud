@@ -32,7 +32,7 @@ let costumerController = {
       res.json(costumer)
     })
   },
-  updateStock: function(req, res){
+  updatePhone: function(req, res){
     let memberid = req.params.memberid
     let phone = req.body.phone
     costumers.findOneAndUpdate({memberid: memberid}, {phone: phone}, {new: true}, function(err, costumer){
@@ -57,3 +57,5 @@ let costumerController = {
     });
   }
 }
+
+module.exports = costumerController;
