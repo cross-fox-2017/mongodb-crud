@@ -14,7 +14,7 @@ let bookController = {
     newbooks.save(function(err){
       if(err) throw err;
       res.json({
-        msg: 'User Created!',
+        msg: 'book Created!',
         book: newbooks
       })
     })
@@ -25,33 +25,29 @@ let bookController = {
       res.json(books)
     })
   },
-  findByTitle: function(req, res){
-    let title = req.body.title
-    books.find({title: title}, function(err, book){
+  findByISBN: function(req, res){
+    let isbn = req.params.isbn
+    books.find({isbn: isbn}, function(err, book){
       if (err) throw err;
       res.json(book)
     })
   },
   updateStock: function(req, res){
-    let title = req.body.title
+    let isbn = req.params.isbn
     let stock = req.body.stock
-    books.find({title: title}, function(err, book){
+    books.findOneAndUpdate({isbn: isbn}, {stock: stock}, {new: true}, function(err, book){
       if (err) throw err;
-      book.stock = stock
-      user.save(function(err){
-        if (err) throw err;
-        res.json({
-          msg: 'Stock Updated',
-          book: book
-        })
+      res.json({
+        msg: 'Stock Updated',
+        book: book
       })
     })
   },
   delete: function(req, res){
-    let title = req.body.title
-    books.find({ username: 'starlord55' }, function(err, book) {
+    let isbn = req.params.isbn
+    books.find({ isbn: isbn }, function(err, book) {
       if (err) throw err;
-      book.remove(function(err) {
+      books.remove(function(err) {
         if (err) throw err;
         res.json({
           msg: 'books Deleted',

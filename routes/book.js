@@ -5,5 +5,11 @@ var bookController = require('../controller/bookController.js')
 
 /* GET home page. */
 router.post('/', bookController.create);
+router.get('/', bookController.findAll);
+router.get('/:isbn', bookController.findByISBN);
+router.put('/:isbn', bookController.updateStock);
+router.delete('/:isbn', bookController.delete);
+
+
 
 module.exports = router;

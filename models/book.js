@@ -7,7 +7,7 @@ var Books = new Schema({
   isbn: String,
   author: String,
   category: String,
-  stock: String,
+  stock: Number,
 });
 
 var books = mongoose.model('Books', Books);
