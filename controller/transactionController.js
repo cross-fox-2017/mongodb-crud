@@ -16,12 +16,16 @@ let transactionController = {
     })
   },
   addItem : function (req, res){
-    let book = req.body.bookid
-    let transactionsid = req.body.transactionsid
-    transactions.update(
-      { _id: transactionsid},
-      { $push: {booklist: book}},
-      res.send('done')
+    let bookid = req.body.bookid
+    let transactionid = req.body.transactionid
+    transactions.findOneAndUpdate(
+      { _id: transactionid},
+      { $push: {booklist: bookid}},
+      {safe: true, upsert: true, new : true},
+      function(err, data){
+        if(err) throw err;
+        res.json(data)
+      }
     )
   },
   findAll: function(req, res){
