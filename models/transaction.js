@@ -3,8 +3,11 @@ var Schema   = mongoose.Schema;
 var db = mongoose.connection;
 
 var Transactions = new Schema({
-  trscid : String,
-  memberid : {type: Schema.Types.isbn, ref: 'costumers'},
+  trscid : {
+    type: String,
+    required: true
+  },
+  memberid : {type: Schema.Types.isbn, ref: 'customers'},
   days: Number,
   out_date: Date,
   due_date: Date,

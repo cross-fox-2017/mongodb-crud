@@ -1,7 +1,7 @@
 'use strict'
-var costumers = require('../models/costumer.js')
+var customers = require('../models/customer.js')
 
-let costumerController = {
+let customerController = {
   create : function(req, res){
     let data = {
       memberid : req.body.memberid,
@@ -10,52 +10,52 @@ let costumerController = {
       zipcode: req.body.zipcode,
       phone: req.body.phone
     }
-    let newcostumers = costumers(data)
-    newcostumers.save(function(err){
+    let newcustomers = customers(data)
+    newcustomers.save(function(err){
       if(err) throw err;
       res.json({
-        msg: 'costumer Created!',
-        costumer: newcostumers
+        msg: 'customer Created!',
+        customer: newcustomers
       })
     })
   },
   findAll: function(req, res){
-    costumers.find({}, function(err, costumers){
+    customers.find({}, function(err, customers){
       if (err) throw err;
-      res.json(costumers)
+      res.json(customers)
     })
   },
   findById: function(req, res){
     let memberid = req.params.memberid
-    costumers.find({memberid: memberid}, function(err, costumer){
+    customers.find({memberid: memberid}, function(err, customer){
       if (err) throw err;
-      res.json(costumer)
+      res.json(customer)
     })
   },
   updatePhone: function(req, res){
     let memberid = req.params.memberid
     let phone = req.body.phone
-    costumers.findOneAndUpdate({memberid: memberid}, {phone: phone}, {new: true}, function(err, costumer){
+    customers.findOneAndUpdate({memberid: memberid}, {phone: phone}, {new: true}, function(err, customer){
       if (err) throw err;
       res.json({
         msg: 'Phone Updated',
-        costumer: costumer
+        customer: customer
       })
     })
   },
   delete: function(req, res){
     let memberid = req.params.memberid
-    costumers.find({ memberid: memberid }, function(err, costumer) {
+    customers.find({ memberid: memberid }, function(err, customer) {
       if (err) throw err;
-      costumers.remove(function(err) {
+      customers.remove(function(err) {
         if (err) throw err;
         res.json({
-          msg: 'costumers Deleted',
-          costumer: costumer
+          msg: 'customers Deleted',
+          customer: customer
         });
       });
     });
   }
 }
 
-module.exports = costumerController;
+module.exports = customerController;

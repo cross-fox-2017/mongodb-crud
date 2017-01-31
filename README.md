@@ -6,7 +6,7 @@ sistem crud dasar untuk penggunaan di Library
 ## Models
 ```
 Books
-Costumers
+customers
 Transaction
 ```
 
@@ -19,14 +19,14 @@ Transaction
 | /books/isbn | PUT   | Update Stock book by isbn
 | /books/isbn | DELETE| Delete Book
 
-## Routes Costumers
+## Routes Customers
 | Route               | HTTP  | Description
 | --------------------| ----  | -----------
-| /costumers          | GET   | List all costumers
-| /costumers          | POST  | Create new costumer
-| /costumers/memberid | GET   | get single costumer by memberid
-| /costumers/memberid | PUT   | Update Phone costumer by memberid
-| /costumers/memberid | DELETE| Delete costumer
+| /customers          | GET   | List all customers
+| /customers          | POST  | Create new customer
+| /customers/memberid | GET   | get single customer by memberid
+| /customers/memberid | PUT   | Update Phone customer by memberid
+| /customers/memberid | DELETE| Delete customer
 
 ## Routes Transaction
 | Route                      | HTTP  | Description
