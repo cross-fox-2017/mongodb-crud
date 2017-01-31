@@ -16,13 +16,11 @@ module.exports = {
       res.send(`Add Transaction Success!\n${transaction}`)
     });
   },
-
   addItem: function(req, res) {
     console.log({
       transactionId: req.params.id, // transaction ID
       bookId: req.body.bookId
     })
-
     Transaction.update(
       {_id: req.params.id},
       {$push: {books: req.body.bookId}},
@@ -33,49 +31,40 @@ module.exports = {
     }).catch(function(err) {
       res.send(err)
     })
-
+  },
+  deleteItem: function(req, res) {
+    console.log({
+      transactionId: req.params.id, // transaction ID
+      bookId: req.body.bookId
+    })
+    Transaction.update(
+      {_id: req.params.id},
+      {$pull: {books: req.body.bookId}}
+    ).then(function(data) {
+      console.log({data})
+      res.send('OK')
+    }).catch(function(err) {
+      res.send(err)
+    })
+  },
+  deleteTransaction: function(req, res) {
+    Transaction.findOneAndRemove({ _id: req.params.id }, function(err) {
+      if (err) throw err;
+      res.send(`Transaction with id : ${req.params.id} has been deleted!`);
+    });
+  },
+  getAll: function(req, res) {
+    Transaction.find({}, function(err, transactions) {
+      if (err) throw err;
+      res.send(transactions);
+    });
+  },
+  populate: function(req, res) {
+    Transaction.find().populate('books').populate('memberId').exec(function(error, results) {
+        res.send(results);
+    });
+  },
+  checkout: function(req,res) {
+    
   }
-
-  // getCustomer: function(req, res, next) {
-  //   customers.find({ memberid: req.params.memberid }, function(err, customer) {
-  //     if (err) throw err;
-  //
-  //     // object of the customer
-  //     res.send(`${customer}`);
-  //   });
-  // },
-  // getCustomers: function(req, res, next) {
-  //   customers.find({}, function(err, customers) {
-  //     if (err) throw err;
-  //
-  //     // object of all the books
-  //     res.send(customers);
-  //   });
-  // },
-  // updateCustomer: function(req, res, next) {
-  //   // find the memberid
-  //   // update from the memberid
-  //   customers.findOneAndUpdate(
-  //     {
-  //       memberid: req.params.memberid
-  //     },
-  //     {
-  //       name: req.body.name,
-  //       address: req.body.address,
-  //       zipcode: req.body.zipcode,
-  //       phone: req.body.phone
-  //     }, function(err) {
-  //     if (err) throw err;
-  //     // we have the updated book returned to us
-  //     res.send(`Customer with memberid : ${req.params.memberid} has been updated!`);
-  //   });
-  // },
-  // deleteCustomer: function(req, res, next) {
-  //   // get the user
-  //   customers.findOneAndRemove({ memberid: req.params.memberid }, function(err) {
-  //     if (err) throw err;
-  //     // we have deleted the customer
-  //     res.send(`Customer with memberid : ${req.params.memberid} has been deleted!`);
-  //   });
-  // }
 };
