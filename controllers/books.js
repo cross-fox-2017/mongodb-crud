@@ -35,7 +35,7 @@ module.exports = {
         res.json(user);
       })
       .catch(function(err){
-        res.json('error')
+        res.json('silahkan isi data dengan lengkap')
       })
   },
   update: function(req, res, next){
