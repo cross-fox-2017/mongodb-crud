@@ -13,7 +13,6 @@ module.exports={
       stock: req.body.stock,
     });
 
-    // save the user
     newBook.save(function(err) {
       if (err) throw err;
       res.send(newBook);
@@ -23,8 +22,15 @@ module.exports={
     Book.find({}, function(err,books) {
       if (err) throw err;
 
-      // object of all the users
       res.send(books);
+    });
+
+  },
+  getBook: function(req,res){
+    Book.find({isbn:req.params.isbn}, function(err,book) {
+      if (err) throw err;
+
+      res.send(book);
     });
 
   },
@@ -32,7 +38,7 @@ module.exports={
     Book.findOne({isbn:req.params.isbn}, function(err, book) {
       if (err) throw err;
 
-      // change the users location
+
       book.title= req.body.title,
       book.author= req.body.author,
       book.category= req.body.category,
@@ -51,7 +57,6 @@ module.exports={
     Book.findOneAndRemove({isbn:req.params.isbn}, function(err) {
         if (err) throw err;
 
-      // we have deleted the user
       res.send(`Book with isbn ${req.params.isbn} deleted!`);
     });
   }
