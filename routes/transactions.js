@@ -1,20 +1,17 @@
 var express = require('express');
 var router = express.Router();
-// const customerController = require('../controllers/customersController');
+const controller = require('../controllers/transactions');
 
-// /* GET all customer. */
-// router.get('/', customerController.getCustomers);
+// router.get('/', controller.getAll);
 //
-// /* GET a single customer. */
-// router.get('/:memberid', customerController.getCustomer);
+// router.get('/:memberid', controller.getOne);
+
+router.post('/', controller.add);
+
+router.post('/:id', controller.addItem);
+
+// router.delete('/:memberid', controller.delete);
 //
-// /* Create a customer. */
-// router.post('/', customerController.addCustomer);
-//
-// /* Delete a customer. */
-// router.delete('/:memberid', customerController.deleteCustomer);
-//
-// /* Update a customer. */
-// router.put('/:memberid', customerController.updateCustomer);
+// router.put('/:memberid', controller.update);
 
 module.exports = router;
