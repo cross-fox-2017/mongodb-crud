@@ -7,6 +7,8 @@ router.post('/', books.insertData)
 router.get('/', books.showData)
 router.get('/:id', books.showDataById)
 router.get('/isbn/:isbn', books.showDataByIsbn)
+router.put('/:isbn', books.updateBook)
+router.delete('/:isbn',books.deleteData)
 
 
 module.exports = router;
