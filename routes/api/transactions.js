@@ -12,4 +12,8 @@ router.delete('/transactions/:id', controller.deleteTransaction);
 
 router.put('/transactions/:id', controller.updateTransaction);
 
+router.put('/transactions/addbook/:id', controller.addBooks);
+
+router.put('/transactions/deletebook/:id', controller.deleteBooks);
+
 module.exports = router;

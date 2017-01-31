@@ -3,10 +3,10 @@ let Schema = mongoose.Schema;
 
 let customerSchema = new Schema({
   name: String,
-  memberid: String,
+  memberid: {type: String, required: true, unique: true},
   address: String,
   zipcode: String,
-  phone: String,
+  phone: {type: String, required: true, unique: true},
   updatedAt: Date,
   createdAt: Date
 })
