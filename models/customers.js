@@ -10,7 +10,7 @@ var customerSchema = new Schema({
   phone: String
 },
 {
-  timestamp: true
+  timestamps: true
 });
 
 var Customer = mongoose.model('Customer', customerSchema);

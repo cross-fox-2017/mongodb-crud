@@ -41,6 +41,14 @@ module.exports = {
 
           res.send(book);
         })
+    },
+
+    deleteBook : function(req, res, next) {
+      Book.findOneAndRemove({isbn: req.params.isbn}, function(err){
+        if(err) throw err;
+
+          res.send(`book with isbn ${req.params.isbn} has been removed`);
+        })
     }
 
 }

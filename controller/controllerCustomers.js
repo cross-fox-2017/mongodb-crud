@@ -11,7 +11,7 @@ module.exports = {
     },
 
     findByMemberId : function(req, res, next) {
-      Customer.find({isbn: req.query.memberid}, function(err,customers){
+      Customer.find({memberid: req.query.memberid}, function(err,customers){
         if(err) throw err;
         res.send(customers);
       })
@@ -36,10 +36,18 @@ module.exports = {
     },
 
     updateMember : function(req, res, next) {
-      Customer.findOneAndUpdate({isbn: req.params.memberid}, req.body ,{new : true}, function(err,book){
+      Customer.findOneAndUpdate({memberid: req.params.memberid}, req.body ,{new : true}, function(err,book){
         if(err) throw err;
 
           res.send(book);
+        })
+    },
+
+    deleteMember : function(req, res, next) {
+      Customer.findOneAndRemove({memberid: req.params.memberid}, function(err){
+        if(err) throw err;
+
+          res.send(`member with id ${req.params.memberid} has been removed`);
         })
     }
 

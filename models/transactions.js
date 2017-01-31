@@ -15,6 +15,6 @@ var transactionSchema = new Schema({
   timestamps: true
 });
 
-var Transaction = mongoose.model('Transaction', TransactionSchema);
+var Transaction = mongoose.model('Transaction', transactionSchema);
 
 module.exports = Transaction;
