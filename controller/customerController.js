@@ -47,13 +47,16 @@ let customerController = {
     let memberid = req.params.memberid
     customers.find({ memberid: memberid }, function(err, customer) {
       if (err) throw err;
-      customers.remove(function(err) {
-        if (err) throw err;
-        res.json({
-          msg: 'customers Deleted',
-          customer: customer
+      if (!customer){res.send('not found')
+      } else {
+        customer.remove(function(err) {
+          if (err) throw err;
+          res.json({
+            msg: 'customers Deleted',
+            customer: customer
+          });
         });
-      });
+      }
     });
   }
 }
