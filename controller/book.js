@@ -18,8 +18,12 @@ var Book = {
           })
     },
     showData: function(req,res,next){
-
+        modelsBook.find({},function(err, data) {
+          // res.send(data)//atau
+          res.json(data)
+        })
     }
+
 }
 
 module.exports = Book
