@@ -8,13 +8,11 @@ var customersSchema = new Schema({
   memberId: String,
   address: String,
   zipcode: String,
-  phone: String
-},
-  {
-    timestamps : true
-  }
+  phone: String,
+  createdAt: Date,
+  updatedAt: Date
 });
 
-var Customers = mongoose('Customers', bookSchema)
+var Customers = mongoose.model('Customers', customersSchema)
 
 module.exports = Customers;

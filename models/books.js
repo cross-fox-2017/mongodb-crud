@@ -1,6 +1,7 @@
 "use strict"
 
 const mongoose = require('mongoose');
+
 var Schema = mongoose.Schema;
 
 var booksSchema = new Schema({
@@ -8,13 +9,11 @@ var booksSchema = new Schema({
   title: String,
   author: String,
   category: String,
-  stock: Number
-},
-  {
-    timestamps : true
-  }
+  stock: Number,
+  createdAt: Date,
+  updatedAt: Date
 });
 
-var Books = mongoose('Books', bookSchema)
+var Books = mongoose.model('Books', booksSchema)
 
 module.exports = Books;

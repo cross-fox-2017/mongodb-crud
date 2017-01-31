@@ -1,14 +1,20 @@
 var express    = require('express');
 var router     = express.Router();
-var controller = require('../../controller/books.controller.js')
+var controller = require('../../controllers/books.controller.js')
 
 
-router.get('/', controller.getAllUser)
+router.get('/', controller.getAllBook)
 
-router.get('/:id', controller.getUser)
+router.get('/:isbn', controller.getBook)
 
-router.post('/', controller.createUser)
+router.post('/', controller.createBook)
 
-router.delete('/:id', controller.deleteUser)
+router.delete('/:isbn', controller.deleteBook)
 
-router.put('/:id', controller.updateUser)
+router.put('/:isbn', controller.updateBook)
+
+
+
+
+
+module.exports = router;
