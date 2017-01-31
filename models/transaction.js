@@ -3,13 +3,14 @@ var Schema   = mongoose.Schema;
 var db = mongoose.connection;
 
 var Transactions = new Schema({
-  memberid : String,
+  trscid : String,
+  memberid : {type: Schema.Types.isbn, ref: 'costumers'},
   days: Number,
   out_date: Date,
   due_date: Date,
   in_date: Date,
   fine: Number,
-  booklist: []
+  booklist: [{ type: Schema.Types.isbn, ref: 'books' }]
 });
 
 var transaction = mongoose.model('Transactions', Transactions);
