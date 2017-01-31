@@ -8,6 +8,9 @@ const mongoose = require('mongoose');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var customers = require('./routes/customers');
+var books = require('./routes/books');
+var transactions = require('./routes/transactions');
 
 var app = express();
 
@@ -28,6 +31,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/api/customers', customers);
+app.use('/api/books', books);
+app.use('/api/transactions', transactions);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -41,7 +47,7 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  
   // render the error page
   res.status(err.status || 500);
   res.render('error');
