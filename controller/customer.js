@@ -1,6 +1,6 @@
 const modelsCustomer = require('../models/customer')
 
-var Book = {
+var Customer = {
     insertData: function(req, res, next) {
         var saveData = new modelsCustomer({
             name: req.body.name,
@@ -34,7 +34,7 @@ var Book = {
         })
     },
 
-    showDataByIsbn: function(req, res, next) {
+    showDataByMemberID: function(req, res, next) {
         modelsCustomer.find({
             memberid: req.params.memberid
         }, function(err, data) {

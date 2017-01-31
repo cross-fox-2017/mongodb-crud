@@ -6,7 +6,7 @@ const customers = require('../controller/customer')
 router.post('/', customers.insertData)
 router.get('/', customers.showData)
 router.get('/:id', customers.showDataById)
-router.get('/memberid/:memberid', customers.showDataByIsbn)
+router.get('/memberid/:memberid', customers.showDataByMemberID)
 router.put('/:memberid', customers.updateBook)
 router.delete('/:memberid',customers.deleteData)
 

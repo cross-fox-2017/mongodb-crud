@@ -1,12 +1,13 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
-var customerSchema = new mongoose.Schema({
-  name:STRING,
-  memberid:STRING,
-  address:STRING,
-  zipcode:STRING,
-  phone:STRING
+
+var customerSchema = new Schema({
+  name:String,//Dilarang ditulis dengan huruf Besar
+  memberid:String,
+  address:String,
+  zipcode:String,
+  phone:String
 })
 
 let Customer = mongoose.model('Customer',customerSchema)
