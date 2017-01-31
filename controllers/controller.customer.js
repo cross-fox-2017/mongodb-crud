@@ -15,20 +15,22 @@ var controllerCustomer = {
 
     // save the customer
     newCustomer.save(function(err, data) {
-      if (err) throw err;
-      res.json("customer has been succesfully created : "+ data)
+      if (err) res.json(err);
+      res.json("customer has been succesfully created : " + data);
     });
 
   },
   /* get All customer */
   getAllCustomer : function(req, res, next){
     modelCustomer.find({}, function(err, data){
+      if (err) res.json(err);
       res.json(data);
     })
   },
   /* find one customer */
   getOneCustomer : function(req, res, next){
     modelCustomer.find({memberid: req.params.memberid}, function(err, data){
+      if (err) res.json(err);
       res.json(data);
     })
   },
@@ -42,7 +44,7 @@ var controllerCustomer = {
     },{
       new: true
     }, function(err, data) {
-      if (err) throw err;
+      if (err) res.json(err);
       // we have the updated book returned to us
       res.json("data has been updated : " +  data);
     });
@@ -55,7 +57,6 @@ var controllerCustomer = {
       } else if (data.memberid != null){
         res.json("member with memberid : " + data.memberid + " has been deleted");
       }
-
     });
   }
 }

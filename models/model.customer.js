@@ -5,7 +5,10 @@ var Schema = mongoose.Schema;
 // create a schema
 var customerSchema = new Schema({
   name: String,
-  memberid: String,
+  memberid: {
+    type: String,
+    unique: true
+  },
   address: String,
   zipcode: String,
   phone: String

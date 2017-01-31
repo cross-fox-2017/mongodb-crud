@@ -4,7 +4,10 @@ var Schema = mongoose.Schema;
 
 // create a schema
 var bookSchema = new Schema({
-  isbn: String,
+  isbn: {
+    type: String,
+    unique: true
+  },
   title: String,
   author: String,
   category: String,

@@ -52,11 +52,11 @@ document books Ex :
 
 document customer Ex :
 [{
-  name: 'tama tamfan',
+  name: 'Septian Adhi Tama "Tamvan"',
   memberid: 'CL0002',
-  address: 'Jl. pim',
-  zipcode: "50022",
-  phone: "083806781188"
+  address: 'Jalan Masjid Al Yaqin, Gg. Menur, No 80',
+  zipcode: "13520",
+  phone: "085695434151"
 },
 {
   name: 'yoni',
