@@ -4,9 +4,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose')//import lib mongose
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+
+mongoose.connect('mongodb://localhost/library')//mongoose to connect database library
 
 var app = express();
 
