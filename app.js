@@ -8,7 +8,7 @@ var mongoose = require('mongoose')//import lib mongose
 
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var users = require('./routes/users');//Menghubungkan ke routes/users
 var books = require('./routes/books');//Menghubungkan ke routes/books
 var customers = require('./routes/customers')//Menghubungkan ke routes/customers
 var transactions = require('./routes/transactions')//Menghubungkan ke routes/transactions
@@ -31,9 +31,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-app.use('api/books',books)
-app.use('api/customers',customers)
-app.use('api/transactions'transactions)
+app.use('/api/books',books);
+app.use('/api/customers',customers);
+app.use('/api/transactions',transactions);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
