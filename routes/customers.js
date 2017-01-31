@@ -5,12 +5,12 @@ const controllerCustomer = require('../controllers/controller.customer');
 /* get customer listing. */
 router.get('/', controllerCustomer.getAllCustomer);
 /* get one customer */
-router.get('/:isbn', controllerCustomer.getOneCustomer);
+router.get('/:memberid', controllerCustomer.getOneCustomer);
 /* create customer */
 router.post('/', controllerCustomer.createCustomer);
 /* edit customer */
-router.put('/:isbn', controllerCustomer.editOneCustomer);
+router.put('/:memberid', controllerCustomer.editOneCustomer);
 /* delete customer */
-router.delete('/:isbn', controllerCustomer.deleteOneCustomer);
+router.delete('/:memberid', controllerCustomer.deleteOneCustomer);
 
 module.exports = router;

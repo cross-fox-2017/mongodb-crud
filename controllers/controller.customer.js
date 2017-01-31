@@ -50,8 +50,12 @@ var controllerCustomer = {
   /* delete customer */
   deleteOneCustomer : function(req, res, next){
     modelCustomer.findOneAndRemove({ memberid: req.params.memberid }, function(err, data) {
-      if (err) throw err;
-      res.json("member with memberid : " + data.isbn + " has been deleted");
+      if (err){
+        res.json(err)
+      } else if (data.memberid != null){
+        res.json("member with memberid : " + data.memberid + " has been deleted");
+      }
+
     });
   }
 }
