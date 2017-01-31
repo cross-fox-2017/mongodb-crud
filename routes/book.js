@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var book = require("../models/books");
+var controller = require("../controllers/book")
 /* GET home page. */
 
 router.get('/setup', function(req, res, next) {
@@ -24,5 +25,7 @@ router.get('/setup', function(req, res, next) {
   book.create(books);
   res.send('books created!')
 })
+
+router.get('/',controller.getBooks)
 
 module.exports = router;
