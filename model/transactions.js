@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 
+
 var Schema   = mongoose.Schema;
 
 var transactions = new Schema({
@@ -9,11 +10,10 @@ var transactions = new Schema({
     due_date       : Date,
     in_date        : Date,
     fine           : Number,
-    booklist       : { type: Schema.Types.ObjectId, ref: 'book' }
-    stories : [{ type: Schema.Types.ObjectId, ref: 'Story' }]
+    booklist       : { type:Array, "default":[] }
 });
 
 
 mongoose.model('transactions', transactions);
 
-module.exports = transactions
+module.exports = Transaction

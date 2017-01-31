@@ -8,13 +8,13 @@ router.get('/setup', function(req, res, next) {
 
   var books = [
 
-    { isbn     : "978-1-60309-057-5",
+    { isbn     : "isbn1",
       title    : "Dragon Puncher",
       author   : "James Kochalka",
       category : "All Ages",
       stock    : 3 },
 
-    { isbn     : "978-1-891830-77-8",
+    { isbn     : "isbn2",
       title    : "Every Girl is the End of the World for Me",
       author   : "Jeffrey Brown",
       category : "Mature (16+)",
@@ -27,5 +27,8 @@ router.get('/setup', function(req, res, next) {
 })
 
 router.get('/',controller.getBooks)
+router.post('/',controller.addBook)
+router.put('/:isbn',controller.editBook)
+router.delete('/:isbn',controller.deleteBook)
 
 module.exports = router;

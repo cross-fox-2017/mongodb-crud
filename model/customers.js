@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 
+
 var Schema   = mongoose.Schema;
 
 var customers = new Schema({
@@ -10,6 +11,6 @@ var customers = new Schema({
     phone       : String
 });
 
-var Customer = mongoose.model('Customer', customers);
+mongoose.model('customers', customers);
 
-module.exports = Customer
+module.exports = customers
