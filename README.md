@@ -11,4 +11,14 @@ db.books.insert(
     "stock": 5
   }
 );
+
+db.books.insert(
+  {
+    "isbn" : "235-7-189741-11-2",
+    "title" : "Dragon Puncher",
+    "author" : "Bob Fritz",
+    "category" : "All Ages",
+    "stock": 3
+  }
+);
 ```
