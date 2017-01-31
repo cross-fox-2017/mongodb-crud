@@ -10,6 +10,6 @@ var books = new Schema({
     stock    : Number
 });
 
-mongoose.model('books', books);
+var Book = mongoose.model('Book', books);
 
 module.exports = Book

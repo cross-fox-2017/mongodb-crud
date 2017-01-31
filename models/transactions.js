@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 
-
 var Schema   = mongoose.Schema;
 
 var transactions = new Schema({
@@ -16,4 +15,4 @@ var transactions = new Schema({
 
 mongoose.model('transactions', transactions);
 
-module.exports = Transaction
+module.exports = transactions
