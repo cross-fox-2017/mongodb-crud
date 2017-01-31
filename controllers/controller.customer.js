@@ -3,7 +3,7 @@ const modelCustomer = require('../models/model.customer');
 var controllerCustomer = {
   /* create new book */
   createCustomer : function(req, res, next){
-
+    console.log(req.body);
     // create a new customer
     var newCustomer = modelCustomer({
       memberid: req.body.memberid,
@@ -16,7 +16,7 @@ var controllerCustomer = {
     // save the customer
     newCustomer.save(function(err, data) {
       if (err) throw err;
-      res.json("customer has been succesfully created : ", data)
+      res.json("customer has been succesfully created : "+ data)
     });
 
   },
@@ -44,7 +44,7 @@ var controllerCustomer = {
     }, function(err, data) {
       if (err) throw err;
       // we have the updated book returned to us
-      res.json("data has been updated : ", data);
+      res.json("data has been updated : " +  data);
     });
   },
   /* delete customer */

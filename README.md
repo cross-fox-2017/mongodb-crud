@@ -16,6 +16,9 @@ mongodb-crud is a back end application about liblary ( API )
 | /api/customers            | POST   | Create a customers
 | /api/customers/:memberid  | DELETE | Delete a customers
 | /api/customers/:memberid  | PUT    | Update a customers with new info
+| /api/transactions            | GET    | Get all transactions
+| /api/transactions/:transactionID  | GET    | Get one transaction
+| /api/transactions            | POST   | Create a transaction
 
 # Database Setup
 

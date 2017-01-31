@@ -15,7 +15,7 @@ var controllerTransaction = {
     // save the customer
     newTransaction.save(function(err, data) {
       if (err) throw err;
-      res.json("Transaction has been succesfully created : ", data)
+      res.json("Transaction has been succesfully created : " +  data)
     });
 
   },
