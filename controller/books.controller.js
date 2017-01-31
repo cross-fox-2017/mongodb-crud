@@ -16,7 +16,7 @@ module.exports={
     // save the user
     newBook.save(function(err) {
       if (err) throw err;
-      res.send('Book created!');
+      res.send(newBook);
     });
   },
   getBooks: function(req,res){
@@ -27,6 +27,33 @@ module.exports={
       res.send(books);
     });
 
+  },
+  updateBook: function(req,res){
+    Book.findOne({isbn:req.params.isbn}, function(err, book) {
+      if (err) throw err;
+
+      // change the users location
+      book.title= req.body.title,
+      book.author= req.body.author,
+      book.category= req.body.category,
+      book.stock= req.body.stock,
+
+      // save the user
+      book.save(function(err) {
+        if (err) throw err;
+
+        res.send(book);
+      });
+
+    });
+  },
+  deleteBook: function(req,res){
+    Book.findOneAndRemove({isbn:req.params.isbn}, function(err) {
+        if (err) throw err;
+
+      // we have deleted the user
+      res.send(`Book with isbn ${req.params.isbn} deleted!`);
+    });
   }
 
 }

@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/api/books', bok.getBooks)
-
 router.post('/api/books', bok.newBook )
-
+router.put('/api/books/:isbn', bok.updateBook)
+router.delete('/api/books/:isbn',bok.deleteBook)
 module.exports = router;
