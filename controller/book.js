@@ -22,8 +22,27 @@ var Book = {
           // res.send(data)//atau
           res.json(data)
         })
-    }
+    },
 
+    showDataById: function(req, res, next){
+      modelsBook.findById(req.params.id,function(err, data) {
+        if(err){
+          res.send(err)
+        }else{
+          res.send(data)
+        }
+      })
+    },
+
+    showDataByIsbn: function(req, res, next){
+      modelsBook.find({isbn:req.params.isbn},function(err, data) {
+        if(err){
+          res.send(err)
+        }else{
+          res.send(data)
+        }
+      })
+    }
 }
 
 module.exports = Book
