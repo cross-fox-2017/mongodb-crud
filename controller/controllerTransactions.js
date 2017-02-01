@@ -10,8 +10,8 @@ module.exports = {
       })
     },
 
-    findByMemberId : function(req, res, next) {
-      Transaction.find({memberid: req.query.memberid}, function(err,transactions){
+    findById : function(req, res, next) {
+      Transaction.find({_id: req.query.id}, function(err,transactions){
         if(err) throw err;
         res.send(transactions);
       })
@@ -22,23 +22,41 @@ module.exports = {
     var newTransaction = Transaction({
       memberid: req.body.memberid,
       days: req.body.days,
-      out_date: req.body.out_date,
-      due_date: req.body.due_date,
-      in_date: req.body.in_date,
+      out_date: new Date(),
+      due_date: new Date(),
+      in_date: new Date(),
       fine: req.body.fine,
-      booklist:[ ]
+      booklist:[]
     })
 
     newTransaction.save(function(err){
       if (err) throw err;
 
-      res.send(`transaction for user with ${req.body.memberid} has been created`)
+      res.send(`transaction with memberid ${req.body.memberid} has been created`)
     })
 
     },
 
+    addBooksToCart : function (req, res) {
+      Transaction.update(
+        {_id: req.params.id},
+        {$push: {booklist:{bookid: req.body.bookid, qty: req.body.qty}}},
+        {upsert: true}).then(function(data){
+          res.send(data)
+        })
+    },
+
+    deleteBooksfromCart : function (req, res) {
+      Transaction.update(
+        {_id: req.params.id},
+        {$pull: {booklist:{bookid: req.body.bookid, qty: req.body.qty}}},
+        {upsert: true}).then(function(data){
+          res.send(data)
+        })
+    },
+
     updateTransaction : function(req, res, next) {
-      Transaction.findOneAndUpdate({memberid: req.params.memberid}, req.body ,{new : true}, function(err,book){
+      Transaction.findOneAndUpdate({_id: req.params.id}, req.body ,{new : true}, function(err,book){
         if(err) throw err;
 
           res.send(book);
@@ -46,10 +64,10 @@ module.exports = {
     },
 
     deleteTransaction : function(req, res, next) {
-      Transaction.findOneAndRemove({memberid: req.params.memberid}, function(err){
+      Transaction.findOneAndRemove({_id: req.params.id}, function(err){
         if(err) throw err;
 
-          res.send(`transactions with id ${req.params.memberid} has been removed`);
+          res.send(`transactions with id ${req.params.id} has been removed`);
         })
     }
 

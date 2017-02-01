@@ -32,12 +32,16 @@ router.delete('/customers/:memberid', controllerCustomers.deleteMember);
 
 router.get('/transactions/', controllerTransactions.findAllTransactions);
 
-router.get('/transactions/search', controllerTransactions.findByMemberId);
+router.get('/transactions/search', controllerTransactions.findById);
 
 router.post('/transactions/', controllerTransactions.createTransaction);
 
-router.put('/transactions/:memberid', controllerTransactions.updateTransaction);
+router.put('/transactions/addbook/:id', controllerTransactions.addBooksToCart);
 
-router.delete('/transactions/:memberid', controllerTransactions.deleteTransaction);
+router.put('/transactions/deletebook/:id', controllerTransactions.deleteBooksfromCart);
+
+router.put('/transactions/:id', controllerTransactions.updateTransaction);
+
+router.delete('/transactions/:id', controllerTransactions.deleteTransaction);
 
 module.exports = router;
