@@ -1,7 +1,7 @@
 const modelsTransaction = require('../models/transaction')
 const modelsBook = require('../models/book')
 const modelsCustomer = require('../models/customer')
-const mongoose = require('mongoose')
+
 
 var Transaction = {
     insertData: function(req, res, next) {
@@ -15,13 +15,13 @@ var Transaction = {
             } else {
                 res.send({
                   _id: data._id,
-                  memberId: mongoose.Types.ObjectId(data.memberId),
+                  memberId: data.memberId,
                   booklist: []
                 })
             }
         })
     },
-    addToCart: function(req, res, next) {
+    addBook: function(req, res, next) {
 
     },
     test: function(req, res, next) {
