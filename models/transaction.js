@@ -2,15 +2,18 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 var transactionSchema = new Schema({
-    memberid: STRING,
-    day: INTEGER,
-    out_date: DATE,
-    due_date: DATE,
-    in_date: DATE,
-    fine: INTEGER,
+  memberId: {
+    type: Schema.Types.ObjectId,
+    ref: "Customer"
+  },
+    // day: Number,
+    // out_date: new Date(),
+    // due_date: new Date(),
+    // in_date: new Date(),
+    // fine: Number,
     booklist: [{
-        isbn: STRING,
-        qty: INTEGER
+      type: Schema.Types.ObjectId,
+      ref: "Book"
     }]
 })
 

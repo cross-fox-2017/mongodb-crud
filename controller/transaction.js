@@ -1,0 +1,36 @@
+const modelsTransaction = require('../models/transaction')
+const modelsBook = require('../models/book')
+const modelsCustomer = require('../models/customer')
+const mongoose = require('mongoose')
+
+var Transaction = {
+    insertData: function(req, res, next) {
+        var saveData = new modelsTransaction({
+            memberId: req.body.memberid,
+            booklist: []
+        })
+        saveData.save(function(err, data) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send({
+                  _id: data._id,
+                  memberId: mongoose.Types.ObjectId(data.memberId),
+                  booklist: []
+                })
+            }
+        })
+    },
+    addToCart: function(req, res, next) {
+
+    },
+    test: function(req, res, next) {
+        modelsTransaction.find().populate('memberId').exec(function(err, data) {
+            res.send(data[0]);
+        })
+    }
+
+
+}
+
+module.exports = Transaction
