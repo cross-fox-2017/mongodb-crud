@@ -8,14 +8,16 @@ var bodyParser = require('body-parser');
 // mongoose
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
+mongoose.Promise = global.Promise;
 
 var index = require('./routes/index');
 var apiBooks = require('./routes/api/books');
 var apiCustomers = require('./routes/api/customers');
+var apiTransactions = require('./routes/api/transactions');
 
 var app = express();
 
-mongoose.Promise = global.Promise;
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -31,6 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/api/books', apiBooks);
 app.use('/api/customers', apiCustomers);
+app.use('/api/transactions', apiTransactions);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

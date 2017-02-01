@@ -30,7 +30,7 @@ module.exports = {
     })
     newCustomers.save((err) =>{
 
-      res.send('Customers has been created!');
+      res.send('New customer has been created');
   })},
 
   //UPDATE
