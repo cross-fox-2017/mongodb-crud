@@ -14,15 +14,29 @@ var Transaction = {
                 res.send(err);
             } else {
                 res.send({
-                  _id: data._id,
-                  memberId: data.memberId,
-                  booklist: []
+                    _id: data._id,
+                    memberId: data.memberId,
+                    booklist: []
                 })
             }
         })
     },
     addBook: function(req, res, next) {
-
+        modelsTransaction.findOneAndUpdate({
+            _id: req.params.id
+        }, {
+            $push: {
+              booklist: req.body.booklist
+            }
+        }, {
+            new: true
+        }).then(function(err, updateBook) {
+            if (err) {
+                res.send(err)
+            } else {
+                res.send(updateData)
+            }
+        })
     },
     test: function(req, res, next) {
         modelsTransaction.find().populate('memberId').exec(function(err, data) {

@@ -4,5 +4,6 @@ const transaction = require('../controller/transaction')
 
 /* GET home page. */
 router.post('/', transaction.insertData)
+router.put('/:id', transaction.addBook)
 
 module.exports = router;
