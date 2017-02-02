@@ -40,30 +40,30 @@ var Transaction = {
     },
 
     deleteBookTransaction: function(req, res, next) {
-      modelsTransaction.find({
-          _id: req.params.id
-      },function(err, data) {
-        if(err){
-          res.send(err)
-        }else{
-          var booklist = data[0].booklist
-          if(booklist.indexOf(req.body.booklist)>=0){
-            booklist.splice(booklist.indexOf(req.body.booklist),1)
-            $pushAll: {
-                data[0].booklist= booklist
-            }
-            data[0].save(function(err) {
-              if(err){
+        modelsTransaction.find({
+            _id: req.params.id
+        }, function(err, data) {
+            if (err) {
                 res.send(err)
-              }else{
-                res.send(data[0])
-              }
-            })
-          }else{
-            res.send("Buku Belum Masuk Keranjang Transaksi")
-          }
-        }
-      })
+            } else {
+                var booklist = data[0].booklist
+                if (booklist.indexOf(req.body.booklist) >= 0) {
+                    booklist.splice(booklist.indexOf(req.body.booklist), 1)
+                    $pushAll: {
+                        data[0].booklist = booklist
+                    }
+                    data[0].save(function(err) {
+                        if (err) {
+                            res.send(err)
+                        } else {
+                            res.send(data[0])
+                        }
+                    })
+                } else {
+                    res.send("Buku Belum Masuk Keranjang Transaksi")
+                }
+            }
+        })
     },
     getTransaction: function(req, res, next) {
         modelsTransaction.find().populate('memberId').populate('booklist').exec(function(err, data) {
@@ -72,15 +72,36 @@ var Transaction = {
     },
     deleteTransaction: function(req, res, next) {
         modelsTransaction.findByIdAndRemove(req.params.id, function(err) {
-          if(err){
-            res.send(err)
-          }else{
-            res.send("Transaction ID : "+ req.params.id +" Terhapus")
-          }
+            if (err) {
+                res.send(err)
+            } else {
+                res.send("Transaction ID : " + req.params.id + " Terhapus")
+            }
         })
     },
-    checkOut:function(req, res, next) {
-      
+    checkOut: function(req, res, next) {
+        modelsTransaction.find({
+            _id: req.params.id
+        }, function(err, data) {
+            if (err) {
+                res.send(err)
+            } else {
+                var booklist = data[0].booklist
+                // res.send(booklist)
+                for (var i = 0; i < booklist.length; i++) {
+                    console.log(booklist[i]);
+                    modelsBook.findById(booklist[i],function(err, updateBook) {
+                      if(err){
+                        res.send(err)
+                      }else{
+                        updateBook.stock = updateBook.stock-1
+                        updateBook.save()
+                      }
+                    })
+                }
+                res.send("Transaction Checkout Success")
+            }
+        })
     }
 }
 
