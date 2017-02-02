@@ -38,6 +38,33 @@ var Transaction = {
             }
         })
     },
+
+    deleteBookTransaction: function(req, res, next) {
+      modelsTransaction.find({
+          _id: req.params.id
+      },function(err, data) {
+        if(err){
+          res.send(err)
+        }else{
+          var booklist = data[0].booklist
+          if(booklist.indexOf(req.body.booklist)>=0){
+            booklist.splice(booklist.indexOf(req.body.booklist),1)
+            $pushAll: {
+                data[0].booklist= booklist
+            }
+            data[0].save(function(err) {
+              if(err){
+                res.send(err)
+              }else{
+                res.send(data[0])
+              }
+            })
+          }else{
+            res.send("Buku Belum Masuk Keranjang Transaksi")
+          }
+        }
+      })
+    },
     getTransaction: function(req, res, next) {
         modelsTransaction.find().populate('memberId').populate('booklist').exec(function(err, data) {
             res.send(data);
