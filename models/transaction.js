@@ -1,15 +1,15 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var transaction = mongoose.Schema({
-    memberid: String,
-    days: Integer,
-    out_date: Date,
-    due_date: Date,
-    in_date: Date,
-    fine: Number,
-    booklist: Array
+var transactionsSchema = new Schema({
+    memberId: {
+      type: Schema.Types.ObjectId,
+      ref: "Customers"
+    },
+    books: [{
+      type: Schema.Types.ObjectId,
+      ref: "Books"
+    }]
 });
 
-var Transaction = mongoose.model('Transaction', transaction);
-
-module.exports = Transaction
+module.exports = mongoose.model('Transactions', transactionsSchema);

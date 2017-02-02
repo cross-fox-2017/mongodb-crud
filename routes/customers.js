@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var db = require("../models/customer");
 var customerController = require("../controllers/customers")
 
 router.get('/', customerController.list)
