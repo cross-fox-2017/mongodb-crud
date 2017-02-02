@@ -26,7 +26,7 @@ var Transaction = {
             _id: req.params.id
         }, {
             $push: {
-              booklist:req.body.booklist
+                booklist: req.body.booklist
             }
         }, {
             new: true
@@ -40,11 +40,18 @@ var Transaction = {
     },
     getTransaction: function(req, res, next) {
         modelsTransaction.find().populate('memberId').populate('booklist').exec(function(err, data) {
-            res.send(data[0]);
+            res.send(data);
+        })
+    },
+    deleteTransaction: function(req, res, next) {
+        modelsTransaction.findByIdAndRemove(req.params.id, function(err) {
+          if(err){
+            res.send(err)
+          }else{
+            res.send("Transaction ID : "+ req.params.id +" Terhapus")
+          }
         })
     }
-
-
 }
 
 module.exports = Transaction
