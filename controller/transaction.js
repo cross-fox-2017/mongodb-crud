@@ -78,6 +78,9 @@ var Transaction = {
             res.send("Transaction ID : "+ req.params.id +" Terhapus")
           }
         })
+    },
+    checkOut:function(req, res, next) {
+      
     }
 }
 

@@ -13,6 +13,7 @@ var books = require('./routes/books');//Menghubungkan ke routes/books
 var customers = require('./routes/customers')//Menghubungkan ke routes/customers
 var transactions = require('./routes/transactions')//Menghubungkan ke routes/transactions
 
+mongoose.Promise = global.Promise; // tambahan agar tidak error (node:3341) DeprecationWarning: Mongoose: mpromise
 mongoose.connect('mongodb://localhost/library')//mongoose to connect database library
 
 var app = express();
