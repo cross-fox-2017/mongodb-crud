@@ -14,7 +14,7 @@ var transactions = require('./routes/transaction');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost/library');
+mongoose.connect('mongodb://localhost/library_new');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -7,10 +7,10 @@ var transactionController = require('../controller/transactionController.js')
 router.post('/newCart', transactionController.createCart)
 router.post('/addItem', transactionController.addItem)
 router.post('/removeItem', transactionController.removeItem)
-// router.post('/', transactionController.create);
+router.get('/:transactionid', transactionController.populate);
 router.get('/', transactionController.findAll);
 // router.get('/:transactionid', transactionController.findById);
 // router.put('/:transactionid', transactionController.updatePhone);
-router.delete('/:transactionid', transactionController.delete);
+router.delete('/:transactionid', transactionController.deleteTransaction);
 
 module.exports = router;

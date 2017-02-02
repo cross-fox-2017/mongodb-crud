@@ -13,8 +13,11 @@ var Transactions = new Schema({
   in_date: Date,
   fine: Number,
   booklist: [{
-    type: Schema.Types.ObjectId,
-    ref: 'books'
+    bookid: {
+      type: Schema.Types.ObjectId,
+      ref: 'books'
+    },
+    qty: Number
   }]
 });
 

@@ -36,9 +36,10 @@ let transactionController = {
   addItem : function (req, res){
     let bookid = req.body.bookid
     let transactionid = req.body.transactionid
+    let qty = req.body.qty
     transactions.findOneAndUpdate(
       { _id: transactionid},
-      { $push: {booklist: bookid}},
+      { $push: {booklist: {bookid: bookid, qty: qty}}},
       {safe: true, upsert: true, new : true},
       function(err, data){
         if(err) throw err;
@@ -52,7 +53,7 @@ let transactionController = {
       res.json(transactions)
     })
   },
-  delete: function(req, res){
+  deleteTransaction: function(req, res){
     let transactionid = req.params.transactionid
     transactions.findOne({ _id: transactionid}, function(err, transaction){
       if (err) throw err;
@@ -66,6 +67,12 @@ let transactionController = {
           })
         })
       }
+    })
+  },
+  populate: function(req, res, next){
+    let id = req.params.transactionid
+    transactions.find({_id: id}).populate('memberid').populate('booklist.bookid').then(function(data){
+      res.json(data)
     })
   }
 }

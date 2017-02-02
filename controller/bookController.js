@@ -47,7 +47,8 @@ let bookController = {
     let isbn = req.params.isbn
     books.find({ isbn: isbn }, function(err, book) {
       if (err) throw err;
-      books.remove(function(err) {
+      if(!book){res.send('book not found')}
+      book.remove(function(err) {
         if (err) throw err;
         res.json({
           msg: 'books Deleted',
