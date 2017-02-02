@@ -26,7 +26,7 @@ var Transaction = {
             _id: req.params.id
         }, {
             $push: {
-              booklist: req.body.booklist
+              booklist:req.body.booklist
             }
         }, {
             new: true
@@ -38,8 +38,8 @@ var Transaction = {
             }
         })
     },
-    test: function(req, res, next) {
-        modelsTransaction.find().populate('memberId').exec(function(err, data) {
+    getTransaction: function(req, res, next) {
+        modelsTransaction.find().populate('memberId').populate('booklist').exec(function(err, data) {
             res.send(data[0]);
         })
     }

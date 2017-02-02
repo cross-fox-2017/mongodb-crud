@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 var transactionSchema = new Schema({
   memberId: {
     type: Schema.Types.ObjectId,
-    ref: "Customers"
+    ref: "Customer"
   },
     // day: Number,
     // out_date: new Date(),
