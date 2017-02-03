@@ -1,0 +1,47 @@
+[33mcommit d9f81387e0c10e1354dde0b4825a93ea1638de5d[m
+Author: yonisetiawan <yonisetiawan1990@gmail.com>
+Date:   Tue Jan 31 16:05:08 2017 +0700
+
+    Get Data By ISBN
+
+[33mcommit fc342322a4bb802aa776817376d023a9b3d850fc[m
+Author: yonisetiawan <yonisetiawan1990@gmail.com>
+Date:   Tue Jan 31 15:39:33 2017 +0700
+
+    Show Data Books
+
+[33mcommit 9cbf07caf4b5e866fd17dee68048112b210a81e2[m
+Author: yonisetiawan <yonisetiawan1990@gmail.com>
+Date:   Tue Jan 31 15:28:40 2017 +0700
+
+    Create Book
+
+[33mcommit 2ef710b56ed16f80e2f57f973b71b71f915f373f[m
+Author: yonisetiawan <yonisetiawan1990@gmail.com>
+Date:   Tue Jan 31 14:29:33 2017 +0700
+
+    Create Models Book-Customer-Transaction
+
+[33mcommit cd41d45c2ccb4c52bdab17793db6f09ea397199d[m
+Author: yonisetiawan <yonisetiawan1990@gmail.com>
+Date:   Tue Jan 31 13:54:57 2017 +0700
+
+    Create Folder and File Controller-Models-Routes
+
+[33mcommit 65a1b97b32991c4926bfbe5994da7eb9a36b9f0c[m
+Author: yonisetiawan <yonisetiawan1990@gmail.com>
+Date:   Tue Jan 31 13:46:12 2017 +0700
+
+    Create Db and Collection(books-transaction-customers)
+
+[33mcommit 02ee3a4c185f4eaf354d69d22836e6bd9647e3d9[m
+Author: M Haidar Hanif <git@mhaidarhanif.com>
+Date:   Tue Jan 31 08:55:52 2017 +0700
+
+    Template
+
+[33mcommit df173e1a01c3cda8b2e93262adcd8f68ce25298e[m
+Author: M Haidar Hanif <tech@mhaidarhanif.com>
+Date:   Tue Jan 31 08:55:44 2017 +0700
+
+    Initial commit
