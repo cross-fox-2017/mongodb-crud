@@ -1,5 +1,7 @@
 'use strict'
 var transactions = require('../models/transaction.js')
+var books = require('../models/book.js')
+
 
 let transactionController = {
   createCart: function(req, res){
@@ -69,10 +71,22 @@ let transactionController = {
       }
     })
   },
-  populate: function(req, res, next){
-    let id = req.params.transactionid
-    transactions.find({_id: id}).populate('memberid').populate('booklist.bookid').then(function(data){
+  findById: function(req, res, next){
+    let transactionid = req.params.transactionid
+    transactions.find({_id: transactionid}).populate('memberid').populate('booklist.bookid').exec(function(err, data){
       res.json(data)
+    }).catch(function(err){
+      res.send(err)
+    })
+  },
+  checkOut: function(req, res){
+    let transactionid = req.params.transactionid
+    transactions.findOne({_id: transactionid}).populate('booklist.bookid').exec(function(err, data){
+      data.booklist.forEach(function(book){
+        books.findOneAndUpdate({_id: book.bookid}, {stock: book.qty}, {new: true}).then(function(data) {
+          console.log(data);
+        })
+      })
     })
   }
 }

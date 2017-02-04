@@ -5,7 +5,7 @@ var db = mongoose.connection;
 var Transactions = new Schema({
   memberid : {
     type: Schema.Types.ObjectId,
-    ref: 'customers'
+    ref: 'Customers'
   },
   days: Number,
   out_date: Date,
@@ -15,7 +15,7 @@ var Transactions = new Schema({
   booklist: [{
     bookid: {
       type: Schema.Types.ObjectId,
-      ref: 'books'
+      ref: 'Books'
     },
     qty: Number
   }]

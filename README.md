@@ -36,6 +36,9 @@ Transaction
 | /transaction/transactionid | GET   | get single transaction by transactionid
 | /transaction/transactionid | PUT   | Update booklist transaction by transactionid
 | /transaction/transactionid | DELETE| Delete transaction
+| /transaction/newCart       | POST  | Create New Cart
+| /transaction/addItem       | POST  | Add books to cart
+| /transaction/removeItem    | POST  | remove book from cart
 
 ## Usage
 ```
